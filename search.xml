@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[哈哈]]></title>
+    <title><![CDATA[仅仅用于测试]]></title>
     <url>%2F2017%2F11%2F21%2F%E5%93%88%E5%93%88%2F</url>
-    <content type="text"><![CDATA[就是]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[我的儿子陈东]]></title>
-    <url>%2F2017%2F11%2F21%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[你是一个瓜皮 气不气很气是吧#你咬我？1234567More info: [Writing](https://hexo.io/docs/writing.html)### Run server``` bash$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    <content type="text"><![CDATA[纪念waney’s blog诞生的日子。]]></content>
+      <categories>
+        <category>个人</category>
+      </categories>
   </entry>
 </search>
