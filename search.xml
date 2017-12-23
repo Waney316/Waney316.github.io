@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[firewall-cmd的使用]]></title>
+    <url>%2F2017%2F12%2F23%2Ffirewall-cmd-use%2F</url>
+    <content type="text"><![CDATA[firewall有几个分区(zone):drop：任何流入网络的包都被丢弃，不作出任何响应。只允许流出的网络连接。block：任何进入的网络连接都被拒绝，并返回 IPv4 的 icmp-host-prohibited 报文或者 IPv6 的 icmp6-adm-prohibited 报文。只允许由该系统初始化的网络连接。public：用以可以公开的部分。你认为网络中其他的计算机不可信并且可能伤害你的计算机。只允许选中的连接接入。external：用在路由器等启用伪装的外部网络。你认为网络中其他的计算机不可信并且可能伤害你的计算机。只允许选中的连接接入。dmz：用以允许隔离区（dmz）中的电脑有限地被外界网络访问。只接受被选中的连接。work：用在工作网络。你信任网络中的大多数计算机不会影响你的计算机。只接受被选中的连接。home：用在家庭网络。你信任网络中的大多数计算机不会影响你的计算机。只接受被选中的连接。internal：用在内部网络。你信任网络中的大多数计算机不会影响你的计算机。只接受被选中的连接。 然后就是简单地使用方法：要使定义的协议永久生效，需要加一句 –permanent，–zone不写则使用默认区域设置默认区域： firewall-cmd --set-default-zone=public 查询默认区域： firewall-cmd --get-default-zone 添加指定端口： firewall-cmd --zone=&lt;zone&gt; --add-port=&lt;port&gt;[-&lt;port&gt;]/&lt;protocol&gt; [--timeout=&lt;seconds&gt;] 允许外部连接接入，端口1234，TCP协议： firewall-cmd --zone=public --add-port=1234/tcp 移除允许的端口： firewall-cmd [--zone=&lt;zone&gt;] --remove-port=&lt;port&gt;[-&lt;port&gt;]/&lt;protocol&gt; 查询端口是否启用： firewall-cmd [--zone=&lt;zone&gt;] --query-port=&lt;port&gt;[-&lt;port&gt;]/&lt;protocol&gt; 启用一项服务： firewall-cmd --permanent [--zone=&lt;zone&gt;] --add-service=&lt;service&gt; 禁用一项服务： firewall-cmd --permanent [--zone=&lt;zone&gt;] --remove-service=&lt;service&gt; 查询一项服务是否启用： firewall-cmd --permanent [--zone=&lt;zone&gt;] --query-service=&lt;service&gt; 重新加载防火墙规则：不用重启服务: firewall-cmd --reload 会重启服务： firewall-cmd --complete-reload 如果还不行，可以用用: service firewalld restart 这么多差不多能简单的设置一下firewall，具体可以看：https://fedoraproject.org/wiki/FirewallD/zh-cn]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>firewall</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[虚拟机工作模式之桥接模式]]></title>
     <url>%2F2017%2F12%2F22%2Fvmware-work-mode%2F</url>
     <content type="text"><![CDATA[vmware为我们提供了三种网络工作模式，它们分别是：Bridged（桥接模式）、NAT（网络地址转换模式）、Host-Only（仅主机模式）。打开vmware虚拟机，我们可以在选项栏的“编辑”下的“虚拟网络编辑器”中看到VMnet0（桥接模式）、VMnet1（仅主机模式）、VMnet8（NAT模式），那么这些都是有什么作用呢？其实，我们现在看到的VMnet0表示的是用于桥接模式下的虚拟交换机；VMnet1表示的是用于仅主机模式下的虚拟交换机；VMnet8表示的是用于NAT模式下的虚拟交换机。 同时，在主机上对应的有VMware Network Adapter VMnet1和VMware Network Adapter VMnet8两块虚拟网卡，它们分别作用于仅主机模式与NAT模式下。在“网络连接”中我们可以看到这两块虚拟网卡，如果将这两块卸载了，可以在vmware的“编辑”下的“虚拟网络编辑器”中点击“还原默认设置”，可重新将虚拟网卡还原。 小伙伴看到这里，肯定有疑问，为什么在真机上没有VMware Network Adapter VMnet0虚拟网卡呢？那么接下来，我们就一起来看一下这是为什么。 一、Bridged（桥接模式）什么是桥接模式？桥接模式就是将主机网卡与虚拟机虚拟的网卡利用虚拟网桥进行通信。在桥接的作用下，类似于把物理主机虚拟为一个交换机，所有桥接设置的虚拟机连接到这个交换机的一个接口上，物理主机也同样插在这个交换机当中，所以所有桥接下的网卡与网卡都是交换模式的，相互可以访问而不干扰。在桥接模式下，虚拟机ip地址需要与主机在同一个网段，如果需要联网，则网关与DNS需要与主机网卡一致。其网络结构如下图所示： 接下来，我们就来实际操作，如何设置桥接模式。首先，安装完系统之后，在开启系统之前，点击“编辑虚拟机设置”来设置网卡模式。 点击“网络适配器”，选择“桥接模式”，然后“确定” 在进入系统之前，我们先确认一下主机的ip地址、网关、DNS等信息。主机信息然后，进入系统编辑网卡配置文件，命令为vi /etc/sysconfig/network-scripts/ifcfg-eth0添加内容如下：添加内容编辑完成，保存退出，然后重启虚拟机网卡，使用ping命令ping外网ip，测试能否联网。测试能否联网能ping通外网ip，证明桥接模式设置成功。那主机与虚拟机之间的通信是否正常呢？我们就用远程工具来测试一下。远程工具测试主机与虚拟机通信正常。这就是桥接模式的设置步骤，相信大家应该学会了如何去设置桥接模式了。桥接模式配置简单，但如果你的网络环境是ip资源很缺少或对ip管理比较严格的话，那桥接模式就不太适用了。如果真是这种情况的话，我们该如何解决呢？接下来，我们就来认识vmware的另一种网络模式：NAT模式。]]></content>
