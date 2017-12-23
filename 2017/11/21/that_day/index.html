@@ -84,7 +84,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="那是什么样的日子">
 <meta property="og:url" content="http://yoursite.com/2017/11/21/that_day/index.html">
-<meta property="og:site_name" content="Waney的个人博客">
+<meta property="og:site_name" content="Waney Blog">
 <meta property="og:description" content="纪念waney’s blog诞生的日子。 完全不懂markdown语法，所以排版很混乱，见谅，也算是完成了大四以来甚至的大三的一个小目标，不管用什么方法，抛开CSDN和博客园搭建一个自己的博客网站，讲道理，托管在github上，速度还是比较蜗牛的，过段时间拖到码云（oschina）上去，应该会稍微好点吧，然后在过多久（自己也不知道需要多久），自己买个服务器自己搭建起来，好像快看到用LAMP搭建服务">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-12-23T03:09:02.045Z">
@@ -126,7 +126,7 @@
 
 
 
-  <title>那是什么样的日子 | Waney的个人博客</title>
+  <title>那是什么样的日子 | Waney Blog</title>
   
 
 
@@ -166,12 +166,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Waney的个人博客</span>
+        <span class="site-title">Waney Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">Welcome to my Blog</p>
+        <p class="site-subtitle">淋雨一直走</p>
       
   </div>
 
@@ -316,7 +316,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Waney的个人博客">
+      <meta itemprop="name" content="Waney Blog">
     </span>
 
     
@@ -773,8 +773,6 @@ var jiathis_config={
   
 
 
-  
-
 
 
 
@@ -813,11 +811,6 @@ var jiathis_config={
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
@@ -1256,8 +1249,9 @@ var jiathis_config={
 const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
 (function(){
   if((typeof(device) != 'undefined') && (device.mobile())){
-    document.getElementById("live2dcanvas").style.width = '75px';
-    document.getElementById("live2dcanvas").style.height = '150px';
+    var trElement = document.getElementById('hexo-helper-live2d');
+    trElement.parentNode.removeChild(trElement);
+    return;
   }else
     if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
   loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/wanko.model.json", 0.5);});
