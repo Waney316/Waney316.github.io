@@ -25,14 +25,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[虚拟机工作模式之桥接模式]]></title>
+    <title><![CDATA[虚拟机三大工作模式]]></title>
     <url>%2F2017%2F12%2F22%2Fvmware-work-mode%2F</url>
     <content type="text"><![CDATA[vmware为我们提供了三种网络工作模式，它们分别是：Bridged（桥接模式）、NAT（网络地址转换模式）、Host-Only（仅主机模式）。打开vmware虚拟机，我们可以在选项栏的“编辑”下的“虚拟网络编辑器”中看到VMnet0（桥接模式）、VMnet1（仅主机模式）、VMnet8（NAT模式），那么这些都是有什么作用呢？其实，我们现在看到的VMnet0表示的是用于桥接模式下的虚拟交换机；VMnet1表示的是用于仅主机模式下的虚拟交换机；VMnet8表示的是用于NAT模式下的虚拟交换机。 一、Bridged（桥接模式）什么是桥接模式？桥接模式就是将主机网卡与虚拟机虚拟的网卡利用虚拟网桥进行通信。在桥接的作用下，类似于把物理主机虚拟为一个交换机，所有桥接设置的虚拟机连接到这个交换机的一个接口上，物理主机也同样插在这个交换机当中，所以所有桥接下的网卡与网卡都是交换模式的，相互可以访问而不干扰。在桥接模式下，虚拟机ip地址需要与主机在同一个网段，如果需要联网，则网关与DNS需要与主机网卡一致。其网络结构如下图所示： 二、NAT（地址转换模式）NAT模式借助虚拟NAT设备和虚拟DHCP服务器，使得虚拟机可以联网。其网络结构如下图所示： 三、Host-Only（仅主机模式）Host-Only模式其实就是NAT模式去除了虚拟NAT设备，然后使用VMware Network Adapter VMnet1虚拟网卡连接VMnet1虚拟交换机来与虚拟机通信的，Host-Only模式将虚拟机与外网隔开，使得虚拟机成为一个独立的系统，只与主机相互通讯。其网络结构如下图所示：]]></content>
       <categories>
         <category>vmware</category>
       </categories>
       <tags>
-        <tag>vmware</tag>
+        <tag>vmware，NAT模式，仅主机模式，桥接模式</tag>
       </tags>
   </entry>
   <entry>
