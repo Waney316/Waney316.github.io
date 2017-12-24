@@ -88,14 +88,10 @@
 <meta property="og:description" content="vmware为我们提供了三种网络工作模式，它们分别是：Bridged（桥接模式）、NAT（网络地址转换模式）、Host-Only（仅主机模式）。打开vmware虚拟机，我们可以在选项栏的“编辑”下的“虚拟网络编辑器”中看到VMnet0（桥接模式）、VMnet1（仅主机模式）、VMnet8（NAT模式），那么这些都是有什么作用呢？其实，我们现在看到的VMnet0表示的是用于桥接模式下的虚拟交换机；V">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://i1.bvimg.com/624619/7b4cdffd1a1c0745.png">
-<meta property="og:image" content="http://www.linuxidc.com/upload/2016_09/160926204625483.png">
 <meta property="og:image" content="http://www.linuxidc.com/upload/2016_09/160926204625481.png">
-<meta property="og:image" content="http://www.linuxidc.com/upload/2016_09/160926204625485.png">
-<meta property="og:image" content="http://www.linuxidc.com/upload/2016_09/160926204625486.png">
-<meta property="og:image" content="http://www.linuxidc.com/upload/2016_09/160926204625488.png">
-<meta property="og:image" content="http://www.linuxidc.com/upload/2016_09/160926204625489.png">
-<meta property="og:image" content="http://www.linuxidc.com/upload/2016_09/1609262046254810.png">
-<meta property="og:updated_time" content="2017-12-22T15:08:48.176Z">
+<meta property="og:image" content="http://www.linuxidc.com/upload/2016_09/160926204664451.png">
+<meta property="og:image" content="http://www.linuxidc.com/upload/2016_09/160926204874121.png">
+<meta property="og:updated_time" content="2017-12-24T03:52:46.131Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="虚拟机工作模式之桥接模式">
 <meta name="twitter:description" content="vmware为我们提供了三种网络工作模式，它们分别是：Bridged（桥接模式）、NAT（网络地址转换模式）、Host-Only（仅主机模式）。打开vmware虚拟机，我们可以在选项栏的“编辑”下的“虚拟网络编辑器”中看到VMnet0（桥接模式）、VMnet1（仅主机模式）、VMnet8（NAT模式），那么这些都是有什么作用呢？其实，我们现在看到的VMnet0表示的是用于桥接模式下的虚拟交换机；V">
@@ -399,7 +395,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  845
+                  487
                 </span>
               
 
@@ -415,7 +411,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  2
                 </span>
               
             </div>
@@ -437,12 +433,10 @@
 
       
         <p>vmware为我们提供了三种网络工作模式，它们分别是：Bridged（桥接模式）、NAT（网络地址转换模式）、Host-Only（仅主机模式）。<br>打开vmware虚拟机，我们可以在选项栏的“编辑”下的“虚拟网络编辑器”中看到VMnet0（桥接模式）、VMnet1（仅主机模式）、VMnet8（NAT模式），那么这些都是有什么作用呢？其实，我们现在看到的VMnet0表示的是用于桥接模式下的虚拟交换机；VMnet1表示的是用于仅主机模式下的虚拟交换机；VMnet8表示的是用于NAT模式下的虚拟交换机。</p>
-<p><img src="http://i1.bvimg.com/624619/7b4cdffd1a1c0745.png" alt=""><br>同时，在主机上对应的有VMware Network Adapter VMnet1和VMware Network Adapter VMnet8两块虚拟网卡，它们分别作用于仅主机模式与NAT模式下。在“网络连接”中我们可以看到这两块虚拟网卡，如果将这两块卸载了，可以在vmware的“编辑”下的“虚拟网络编辑器”中点击“还原默认设置”，可重新将虚拟网卡还原。<br><img src="http://www.linuxidc.com/upload/2016_09/160926204625483.png" alt="http://www.linuxidc.com/upload/2016_09/160926204625483.png"></p>
-<p>小伙伴看到这里，肯定有疑问，为什么在真机上没有VMware Network Adapter VMnet0虚拟网卡呢？那么接下来，我们就一起来看一下这是为什么。</p>
+<p><img src="http://i1.bvimg.com/624619/7b4cdffd1a1c0745.png" alt=""></p>
 <p>一、Bridged（桥接模式）<br>什么是桥接模式？桥接模式就是将主机网卡与虚拟机虚拟的网卡利用虚拟网桥进行通信。在桥接的作用下，类似于把物理主机虚拟为一个交换机，所有桥接设置的虚拟机连接到这个交换机的一个接口上，物理主机也同样插在这个交换机当中，所以所有桥接下的网卡与网卡都是交换模式的，相互可以访问而不干扰。在桥接模式下，虚拟机ip地址需要与主机在同一个网段，如果需要联网，则网关与DNS需要与主机网卡一致。其网络结构如下图所示：<br><img src="http://www.linuxidc.com/upload/2016_09/160926204625481.png" alt="http://www.linuxidc.com/upload/2016_09/160926204625481.png"></p>
-<p>接下来，我们就来实际操作，如何设置桥接模式。<br>首先，安装完系统之后，在开启系统之前，点击“编辑虚拟机设置”来设置网卡模式。</p>
-<p>点击“网络适配器”，选择“桥接模式”，然后“确定”<br><img src="http://www.linuxidc.com/upload/2016_09/160926204625485.png" alt="http://www.linuxidc.com/upload/2016_09/160926204625485.png"></p>
-<p>在进入系统之前，我们先确认一下主机的ip地址、网关、DNS等信息。<br>主机信息<br><img src="http://www.linuxidc.com/upload/2016_09/160926204625486.png" alt="http://www.linuxidc.com/upload/2016_09/160926204625486.png"><br>然后，进入系统编辑网卡配置文件，命令为vi /etc/sysconfig/network-scripts/ifcfg-eth0<br>添加内容如下：<br><img src="http://www.linuxidc.com/upload/2016_09/160926204625488.png" alt="http://www.linuxidc.com/upload/2016_09/160926204625488.png"><br>添加内容<br>编辑完成，保存退出，然后重启虚拟机网卡，使用ping命令ping外网ip，测试能否联网。<br>测试能否联网<br><img src="http://www.linuxidc.com/upload/2016_09/160926204625489.png" alt="http://www.linuxidc.com/upload/2016_09/160926204625489.png"><br>能ping通外网ip，证明桥接模式设置成功。<br>那主机与虚拟机之间的通信是否正常呢？我们就用远程工具来测试一下。<br>远程工具测试<br><img src="http://www.linuxidc.com/upload/2016_09/1609262046254810.png" alt="http://www.linuxidc.com/upload/2016_09/1609262046254810.png"><br>主机与虚拟机通信正常。<br>这就是桥接模式的设置步骤，相信大家应该学会了如何去设置桥接模式了。桥接模式配置简单，但如果你的网络环境是ip资源很缺少或对ip管理比较严格的话，那桥接模式就不太适用了。如果真是这种情况的话，我们该如何解决呢？接下来，我们就来认识vmware的另一种网络模式：NAT模式。</p>
+<p>二、NAT（地址转换模式）<br>NAT模式借助虚拟NAT设备和虚拟DHCP服务器，使得虚拟机可以联网。其网络结构如下图所示：<br><img src="http://www.linuxidc.com/upload/2016_09/160926204664451.png" alt="http://www.linuxidc.com/upload/2016_09/160926204664451.png"></p>
+<p>三、Host-Only（仅主机模式）<br>Host-Only模式其实就是NAT模式去除了虚拟NAT设备，然后使用VMware Network Adapter VMnet1虚拟网卡连接VMnet1虚拟交换机来与虚拟机通信的，Host-Only模式将虚拟机与外网隔开，使得虚拟机成为一个独立的系统，只与主机相互通讯。其网络结构如下图所示：<br><img src="http://www.linuxidc.com/upload/2016_09/160926204874121.png" alt="http://www.linuxidc.com/upload/2016_09/160926204874121.png"></p>
 
       
     </div>
@@ -617,7 +611,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -628,7 +622,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -639,7 +633,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

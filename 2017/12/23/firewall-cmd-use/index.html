@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Waney Blog">
 <meta property="og:description" content="firewall有几个分区(zone):drop：任何流入网络的包都被丢弃，不作出任何响应。只允许流出的网络连接。block：任何进入的网络连接都被拒绝，并返回 IPv4 的 icmp-host-prohibited 报文或者 IPv6 的 icmp6-adm-prohibited 报文。只允许由该系统初始化的网络连接。public：用以可以公开的部分。你认为网络中其他的计算机不可信并且可能伤害你">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-23T14:57:53.541Z">
+<meta property="og:updated_time" content="2017-12-24T03:53:38.749Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="firewall-cmd的使用">
 <meta name="twitter:description" content="firewall有几个分区(zone):drop：任何流入网络的包都被丢弃，不作出任何响应。只允许流出的网络连接。block：任何进入的网络连接都被拒绝，并返回 IPv4 的 icmp-host-prohibited 报文或者 IPv6 的 icmp6-adm-prohibited 报文。只允许由该系统初始化的网络连接。public：用以可以公开的部分。你认为网络中其他的计算机不可信并且可能伤害你">
@@ -390,7 +390,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  574
+                  562
                 </span>
               
 
@@ -429,30 +429,54 @@
       
         <p>firewall有几个分区(zone):<br><strong>drop</strong>：任何流入网络的包都被丢弃，不作出任何响应。只允许流出的网络连接。<br><strong>block</strong>：任何进入的网络连接都被拒绝，并返回 IPv4 的 icmp-host-prohibited 报文或者 IPv6 的 icmp6-adm-prohibited 报文。只允许由该系统初始化的网络连接。<br><strong>public</strong>：用以可以公开的部分。你认为网络中其他的计算机不可信并且可能伤害你的计算机。只允许选中的连接接入。<br><strong>external</strong>：用在路由器等启用伪装的外部网络。你认为网络中其他的计算机不可信并且可能伤害你的计算机。只允许选中的连接接入。<br><strong>dmz</strong>：用以允许隔离区（dmz）中的电脑有限地被外界网络访问。只接受被选中的连接。<br><strong>work</strong>：用在工作网络。你信任网络中的大多数计算机不会影响你的计算机。只接受被选中的连接。<br><strong>home</strong>：用在家庭网络。你信任网络中的大多数计算机不会影响你的计算机。只接受被选中的连接。<br><strong>internal</strong>：用在内部网络。你信任网络中的大多数计算机不会影响你的计算机。只接受被选中的连接。</p>
 <p>然后就是简单地使用方法：<br>要使定义的协议永久生效，需要加一句 –permanent，–zone不写则使用默认区域<br>设置默认区域：</p>
-<pre><code>firewall-cmd --set-default-zone=public  
-</code></pre><p>查询默认区域：</p>
-<pre><code>firewall-cmd --get-default-zone 
-</code></pre><p>添加指定端口：</p>
-<pre><code>firewall-cmd --zone=&lt;zone&gt; --add-port=&lt;port&gt;[-&lt;port&gt;]/&lt;protocol&gt; [--timeout=&lt;seconds&gt;]  
-</code></pre><p>允许外部连接接入，端口1234，TCP协议：</p>
-<pre><code>firewall-cmd --zone=public --add-port=1234/tcp 
-</code></pre><p>移除允许的端口：</p>
-<pre><code>firewall-cmd [--zone=&lt;zone&gt;] --remove-port=&lt;port&gt;[-&lt;port&gt;]/&lt;protocol&gt; 
-</code></pre><p>查询端口是否启用：</p>
-<pre><code>firewall-cmd [--zone=&lt;zone&gt;] --query-port=&lt;port&gt;[-&lt;port&gt;]/&lt;protocol&gt; 
-</code></pre><p>启用一项服务：</p>
-<pre><code>firewall-cmd --permanent [--zone=&lt;zone&gt;] --add-service=&lt;service&gt;  
-</code></pre><p>禁用一项服务：</p>
-<pre><code>firewall-cmd --permanent [--zone=&lt;zone&gt;] --remove-service=&lt;service&gt;  
-</code></pre><p>查询一项服务是否启用：</p>
-<pre><code>firewall-cmd --permanent [--zone=&lt;zone&gt;] --query-service=&lt;service&gt;  
-</code></pre><p><strong>重新加载防火墙规则：</strong><br>不用重启服务:</p>
-<pre><code>firewall-cmd --reload  
-</code></pre><p>会重启服务：</p>
-<pre><code>firewall-cmd --complete-reload 
-</code></pre><p>如果还不行，可以用用:</p>
-<pre><code>service firewalld restart  
-</code></pre><p>这么多差不多能简单的设置一下firewall，具体可以看：<a href="https://fedoraproject.org/wiki/FirewallD/zh-cn" target="_blank" rel="noopener">https://fedoraproject.org/wiki/FirewallD/zh-cn</a></p>
+<blockquote>
+<p>  firewall-cmd –set-default-zone=public</p>
+</blockquote>
+<p>查询默认区域：</p>
+<blockquote>
+<p>   firewall-cmd –get-default-zone</p>
+</blockquote>
+<p>添加指定端口：</p>
+<blockquote>
+<pre><code>firewall-cmd --zone=&lt;zone&gt; --add-port=&lt;port&gt;[-&lt;port&gt;]/&lt;protocol&gt; [--timeout=&lt;seconds&gt;]
+</code></pre></blockquote>
+<p>允许外部连接接入，端口1234，TCP协议：</p>
+<blockquote>
+<p>  firewall-cmd –zone=public –add-port=1234/tcp</p>
+</blockquote>
+<p>移除允许的端口：</p>
+<blockquote>
+<p>firewall-cmd [–zone=<zone>] –remove-port=<port>[-<port>]/<protocol></protocol></port></port></zone></p>
+</blockquote>
+<p>查询端口是否启用：</p>
+<blockquote>
+<p>  firewall-cmd [–zone=<zone>] –query-port=<port>[-<port>]/<protocol></protocol></port></port></zone></p>
+</blockquote>
+<p>启用一项服务：</p>
+<blockquote>
+<p> firewall-cmd –permanent [–zone=<zone>] –add-service=<service></service></zone></p>
+</blockquote>
+<p>禁用一项服务：</p>
+<blockquote>
+<pre><code>firewall-cmd --permanent [--zone=&lt;zone&gt;] --remove-service=&lt;service&gt;
+</code></pre></blockquote>
+<p>查询一项服务是否启用：</p>
+<blockquote>
+<p>  firewall-cmd –permanent [–zone=<zone>] –query-service=<service></service></zone></p>
+</blockquote>
+<p><strong>重新加载防火墙规则：</strong><br>不用重启服务:</p>
+<blockquote>
+<p>   firewall-cmd –reload</p>
+</blockquote>
+<p>会重启服务：</p>
+<blockquote>
+<pre><code>firewall-cmd --complete-reload
+</code></pre></blockquote>
+<p>如果还不行，可以用用:</p>
+<blockquote>
+<pre><code>service firewalld restart
+</code></pre></blockquote>
+<p>这么多差不多能简单的设置一下firewall，具体可以看：<a href="https://fedoraproject.org/wiki/FirewallD/zh-cn" target="_blank" rel="noopener">https://fedoraproject.org/wiki/FirewallD/zh-cn</a></p>
 
       
     </div>
@@ -523,6 +547,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/24/dnsjiexi/" rel="prev" title="DNS域名解析服务">
+                DNS域名解析服务 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -625,7 +653,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -636,7 +664,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -647,7 +675,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
