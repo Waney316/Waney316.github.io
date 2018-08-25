@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title><![CDATA[DNS域名解析服务]]></title>
-    <url>%2F2017%2F12%2F24%2Fdnsjiexi%2F</url>
+    <url>%2Fblog%2F2017%2F12%2F24%2Fdnsjiexi%2F</url>
     <content type="text"><![CDATA[&emsp;想起秋招时的一个笔试题，DNS域名解析服务的原理，老实讲当时没有答正确，而是回答的是输入域名到访问网站的过程，第二天面试的时候还问我怎么错了实属尴尬，不过结果还挺幸运。 DNS域名解析服务采用分布式数据结构来存放数据，在执行用户发起的域名查询请求时，具有递归查询和迭代查询两种方式。 递归查询：域名服务器将代替提出请求的客户机(下级DNS服务器)进行域名查询，若域名服务器不能直接回答，则域名服务器会在域各树中的各分支的上下进行递归查询，最终将返回查询结果给客户机，在域名服务器查询期间，客户机将完全处于等待状态。 迭代查询：域名服务器将代替提出请求的客户机(下级DNS服务器)进行域名查询，若域名服务器不能直接回答，则域名服务器会在域各树中的各分支的上下进行递归查询，最终将返回查询结果给客户机，在域名服务器查询期间，客户机将完全处于等待状态。 DNS域名称空间的组织方式&emsp;按其功能命名空间中用来描述 DNS 域名称的五个类别的介绍详见下表中，以及与每个名称类型的示例。 DNS服务的工作过程当 DNS 客户机需要查询程序中使用的名称时，它会查询本地DNS 服务器来解析该名称。客户机发送的每条查询消息都包括3条信息，以指定服务器应回答的问题。 ● 指定的 DNS 域名，表示为完全合格的域名 (FQDN) 。● 指定的查询类型，它可根据类型指定资源记录，或作为查询操作的专门类型。● DNS域名的指定类别。 DNS 查询的过程如下图所示： 1、在浏览器中输入www.qq.com域名，操作系统会先检查自己本地的hosts文件是否有这个网址映射关系，如果有，就先调用这个IP地址映射，完成域名解析。 2、如果hosts里没有这个域名的映射，则查找本地DNS解析器缓存，是否有这个网址映射关系，如果有，直接返回，完成域名解析。 3、如果hosts与本地DNS解析器缓存都没有相应的网址映射关系，首先会找TCP/ip参数中设置的首选DNS服务器，在此我们叫它本地DNS服务器，此服务器收到查询时，如果要查询的域名，包含在本地配置区域资源中，则返回解析结果给客户机，完成域名解析，此解析具有权威性。 4、如果要查询的域名，不由本地DNS服务器区域解析，但该服务器已缓存了此网址映射关系，则调用这个IP地址映射，完成域名解析，此解析不具有权威性。 5、如果本地DNS服务器本地区域文件与缓存解析都失效，则根据本地DNS服务器的设置（是否设置转发器）进行查询，如果未用转发模式，本地DNS就把请求发至13台根DNS，根DNS服务器收到请求后会判断这个域名(.com)是谁来授权管理，并会返回一个负责该顶级域名服务器的一个IP。本地DNS服务器收到IP信息后，将会联系负责.com域的这台服务器。这台负责.com域的服务器收到请求后，如果自己无法解析，它就会找一个管理.com域的下一级DNS服务器地址(qq.com)给本地DNS服务器。当本地DNS服务器收到这个地址后，就会找qq.com域服务器，重复上面的动作，进行查询，直至找到www.qq.com主机。 6、如果用的是转发模式，此DNS服务器就会把请求转发至上一级DNS服务器，由上一级服务器进行解析，上一级服务器如果不能解析，或找根DNS或把转请求转至上上级，以此循环。不管是本地DNS服务器用是是转发，还是根提示，最后都是把结果返回给本地DNS服务器，由此DNS服务器再返回给客户机。 附：从输入域名到访问网站的网络过程]]></content>
       <categories>
         <category>网络</category>
@@ -14,7 +14,7 @@
   </entry>
   <entry>
     <title><![CDATA[firewall-cmd的使用]]></title>
-    <url>%2F2017%2F12%2F23%2Ffirewall-cmd-use%2F</url>
+    <url>%2Fblog%2F2017%2F12%2F23%2Ffirewall-cmd-use%2F</url>
     <content type="text"><![CDATA[firewall有几个分区(zone):drop：任何流入网络的包都被丢弃，不作出任何响应。只允许流出的网络连接。block：任何进入的网络连接都被拒绝，并返回 IPv4 的 icmp-host-prohibited 报文或者 IPv6 的 icmp6-adm-prohibited 报文。只允许由该系统初始化的网络连接。public：用以可以公开的部分。你认为网络中其他的计算机不可信并且可能伤害你的计算机。只允许选中的连接接入。external：用在路由器等启用伪装的外部网络。你认为网络中其他的计算机不可信并且可能伤害你的计算机。只允许选中的连接接入。dmz：用以允许隔离区（dmz）中的电脑有限地被外界网络访问。只接受被选中的连接。work：用在工作网络。你信任网络中的大多数计算机不会影响你的计算机。只接受被选中的连接。home：用在家庭网络。你信任网络中的大多数计算机不会影响你的计算机。只接受被选中的连接。internal：用在内部网络。你信任网络中的大多数计算机不会影响你的计算机。只接受被选中的连接。 然后就是简单地使用方法：要使定义的协议永久生效，需要加一句 –permanent，–zone不写则使用默认区域设置默认区域： firewall-cmd –set-default-zone=public 查询默认区域： firewall-cmd –get-default-zone 添加指定端口： firewall-cmd --zone=&lt;zone&gt; --add-port=&lt;port&gt;[-&lt;port&gt;]/&lt;protocol&gt; [--timeout=&lt;seconds&gt;] 允许外部连接接入，端口1234，TCP协议： firewall-cmd –zone=public –add-port=1234/tcp 移除允许的端口： firewall-cmd [–zone=] –remove-port=[-]/ 查询端口是否启用： firewall-cmd [–zone=] –query-port=[-]/ 启用一项服务： firewall-cmd –permanent [–zone=] –add-service= 禁用一项服务： firewall-cmd --permanent [--zone=&lt;zone&gt;] --remove-service=&lt;service&gt; 查询一项服务是否启用： firewall-cmd –permanent [–zone=] –query-service= 重新加载防火墙规则：不用重启服务: firewall-cmd –reload 会重启服务： firewall-cmd --complete-reload 如果还不行，可以用用: service firewalld restart 这么多差不多能简单的设置一下firewall，具体可以看：https://fedoraproject.org/wiki/FirewallD/zh-cn]]></content>
       <categories>
         <category>Linux</category>
@@ -26,7 +26,7 @@
   </entry>
   <entry>
     <title><![CDATA[虚拟机三大工作模式]]></title>
-    <url>%2F2017%2F12%2F22%2Fvmware-work-mode%2F</url>
+    <url>%2Fblog%2F2017%2F12%2F22%2Fvmware-work-mode%2F</url>
     <content type="text"><![CDATA[vmware为我们提供了三种网络工作模式，它们分别是：Bridged（桥接模式）、NAT（网络地址转换模式）、Host-Only（仅主机模式）。打开vmware虚拟机，我们可以在选项栏的“编辑”下的“虚拟网络编辑器”中看到VMnet0（桥接模式）、VMnet1（仅主机模式）、VMnet8（NAT模式），那么这些都是有什么作用呢？其实，我们现在看到的VMnet0表示的是用于桥接模式下的虚拟交换机；VMnet1表示的是用于仅主机模式下的虚拟交换机；VMnet8表示的是用于NAT模式下的虚拟交换机。 一、Bridged（桥接模式）什么是桥接模式？桥接模式就是将主机网卡与虚拟机虚拟的网卡利用虚拟网桥进行通信。在桥接的作用下，类似于把物理主机虚拟为一个交换机，所有桥接设置的虚拟机连接到这个交换机的一个接口上，物理主机也同样插在这个交换机当中，所以所有桥接下的网卡与网卡都是交换模式的，相互可以访问而不干扰。在桥接模式下，虚拟机ip地址需要与主机在同一个网段，如果需要联网，则网关与DNS需要与主机网卡一致。其网络结构如下图所示： 二、NAT（地址转换模式）NAT模式借助虚拟NAT设备和虚拟DHCP服务器，使得虚拟机可以联网。其网络结构如下图所示： 三、Host-Only（仅主机模式）Host-Only模式其实就是NAT模式去除了虚拟NAT设备，然后使用VMware Network Adapter VMnet1虚拟网卡连接VMnet1虚拟交换机来与虚拟机通信的，Host-Only模式将虚拟机与外网隔开，使得虚拟机成为一个独立的系统，只与主机相互通讯。其网络结构如下图所示：]]></content>
       <categories>
         <category>vmware</category>
@@ -37,7 +37,7 @@
   </entry>
   <entry>
     <title><![CDATA[那是什么样的日子]]></title>
-    <url>%2F2017%2F11%2F21%2Fthat_day%2F</url>
+    <url>%2Fblog%2F2017%2F11%2F21%2Fthat_day%2F</url>
     <content type="text"><![CDATA[纪念waney blog诞生的日子。 完全不懂markdown语法，所以排版很混乱，见谅，也算是完成了大四以来甚至的大三的一个小目标，不管用什么方法，抛开CSDN和博客园搭建一个自己的博客网站，讲道理，托管在github上，速度还是比较蜗牛的，过段时间拖到码云（oschina）上去，应该会稍微好点吧，然后在过多久（自己也不知道需要多久），自己买个服务器自己搭建起来，好像快看到用LAMP搭建服务器了，应该差不过吧。大四了，还有半个学期，过得也是真的块，没啥说的，好好学习，好好减肥，然后找个媳妇。en,就这样]]></content>
       <categories>
         <category>个人</category>
