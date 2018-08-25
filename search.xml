@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[mysql_1]]></title>
+    <url>%2F2018%2F08%2F25%2Fmysql-1%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title></title>
     <url>%2F2018%2F08%2F25%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4%2F</url>
     <content type="text"><![CDATA[1：设置数据库密码第一种方法：mysql -uroot -p 进入数据库后 mysql&gt;set password=password(“新密码”); mysql&gt;flush privileges; 第二种方法：使用GRANT语句 mysql&gt;grant all on . to ‘root’@’localhost’ IDENTIFIED BY ‘你的密码’with grant option ; mysql&gt;flush privileges; 第三种方法：mysqladmin mysqladmin命令格式：mysqladmin -u 用户名 -p 旧密码 password 新密码 mysqladmin -u root -p “old passwd” password “new passwd”]]></content>
