@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="mysql," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="只剩挥散不去的难过">
+<meta name="description" content="1：设置数据库密码第一种方法：mysql -uroot -p 进入数据库后    mysql&amp;gt;set password=password(“新密码”);    mysql&amp;gt;flush privileges;    第二种方法：使用GRANT语句    mysql&amp;gt;grant a">
+<meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mysql_1 ">
+<meta property="og:title" content="mysql相关命令">
 <meta property="og:url" content="http://yoursite.com/2018/08/25/mysql-1/index.html">
 <meta property="og:site_name" content="Waney Blog">
-<meta property="og:description" content="只剩挥散不去的难过">
+<meta property="og:description" content="1：设置数据库密码第一种方法：mysql -uroot -p 进入数据库后    mysql&amp;gt;set password=password(“新密码”);    mysql&amp;gt;flush privileges;    第二种方法：使用GRANT语句    mysql&amp;gt;grant all on . to ‘root’@’localhost’ IDENTIFIED BY ‘你的密码’wi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-25T15:29:55.997Z">
+<meta property="og:updated_time" content="2018-08-25T15:37:07.026Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mysql_1 ">
-<meta name="twitter:description" content="只剩挥散不去的难过">
+<meta name="twitter:title" content="mysql相关命令">
+<meta name="twitter:description" content="1：设置数据库密码第一种方法：mysql -uroot -p 进入数据库后    mysql&amp;gt;set password=password(“新密码”);    mysql&amp;gt;flush privileges;    第二种方法：使用GRANT语句    mysql&amp;gt;grant all on . to ‘root’@’localhost’ IDENTIFIED BY ‘你的密码’wi">
 
 
 
@@ -125,7 +126,7 @@
 
 
 
-  <title>mysql_1  | Waney Blog</title>
+  <title>mysql相关命令 | Waney Blog</title>
   
 
 
@@ -323,7 +324,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">mysql_1 </h1>
+          <h1 class="post-title" itemprop="name headline">mysql相关命令</h1>
         
 
         <div class="post-meta">
@@ -346,6 +347,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">Mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -367,7 +390,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  94
                 </span>
               
 
@@ -404,7 +427,39 @@
       
 
       
-        
+        <h5 id="1：设置数据库密码"><a href="#1：设置数据库密码" class="headerlink" title="1：设置数据库密码"></a>1：设置数据库密码</h5><p>第一种方法：mysql -uroot -p 进入数据库后 </p>
+<ul>
+<li><blockquote>
+<p>mysql&gt;set password=password(“新密码”);</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>mysql&gt;flush privileges;</p>
+</blockquote>
+</li>
+</ul>
+<p>第二种方法：使用GRANT语句 </p>
+<ul>
+<li><blockquote>
+<p>mysql&gt;grant all on <em>.</em> to ‘root’@’localhost’ IDENTIFIED BY ‘你的密码’with grant option ;</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>mysql&gt;flush privileges;</p>
+</blockquote>
+</li>
+</ul>
+<p>第三种方法：mysqladmin </p>
+<blockquote>
+<p>mysqladmin命令格式：mysqladmin -u 用户名 -p 旧密码 password 新密码</p>
+<ul>
+<li><blockquote>
+<p> mysqladmin -u root -p “old passwd” password “new passwd”</p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+
       
     </div>
     
@@ -447,6 +502,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mysql/" rel="tag"><i class="fa fa-tag"></i> mysql</a>
+          
+        </div>
       
 
       
@@ -548,8 +609,17 @@ var jiathis_config={
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -579,7 +649,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -590,7 +660,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -678,6 +748,22 @@ var jiathis_config={
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1：设置数据库密码"><span class="nav-number">1.</span> <span class="nav-text">1：设置数据库密码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
