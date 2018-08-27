@@ -1,6 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux分区方案]]></title>
+    <url>%2F2018%2F08%2F27%2FLinux%E5%88%86%E5%8C%BA%E6%96%B9%E6%A1%88%E4%B8%8E%E8%BF%87%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[Linux分区方案：方案1：（监控服务器，负载均衡器）12345678910111./boot引导分区，存放引导文件和Linux内核。 启动文件：用于判断你需要启动哪个操作系统或启动哪个内核。 内核：简单的讲，程序与硬件间的桥梁，你使用应用程序通过内核控制整个计算机。 分区时一般设定：100-200M.2.swapSwap分区，作为虚拟内存使用。在系统的物理内存不够用的时候，把硬盘空间中的一部分空间释放出来，以供当前运行的程序使用。分区时一般设定：内存大小的1到1.5倍.3./作为文件系统的根目录剩余的给根分区。 方案2：（适合数据库服务器，存储服务器，共享存储服务器NFS）123456789101112131./boot引导分区，存放引导文件和Linux内核。 启动文件：用于判断你需要启动哪个操作系统或启动哪个内核。 内核：简单的讲，程序与硬件间的桥梁，你使用应用程序通过内核控制整个计算机。 分区时一般设定：100-200M.2.swapSwap分区，作为虚拟内存使用。在系统的物理内存不够用的时候，把硬盘空间中的一部分空间释放出来，以供当前运行的程序使用。分区时一般设定：内存大小的1到1.5倍.3./作为文件系统的根目录剩余的给根分区。4./data剩余的全部给data分区，用与存放重要数据。 方案3：（适合大门户网站的服务器）1234567891011121./boot引导分区，存放引导文件和Linux内核。 启动文件：用于判断你需要启动哪个操作系统或启动哪个内核。 内核：简单的讲，程序与硬件间的桥梁，你使用应用程序通过内核控制整个计算机。 分区时一般设定：100-200M.2.swapSwap分区，作为虚拟内存使用。在系统的物理内存不够用的时候，把硬盘空间中的一部分空间释放出来，以供当前运行的程序使用。分区时一般设定：内存大小的1到1.5倍.3./作为文件系统的根目录剩余的给根分区。4.剩余的磁盘不分区，哪里有需要再分给谁。 分区过程：1：图形化分区123456781）：勾选我要配置分区[http://img.blog.csdn.net/20150530112939843?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGl1eWFubGluZ2xhbnE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center](https://note.youdao.com/)2）：点击完成，到手动分区界面；做2步，先将分区方案改为标准分区，然后点击“点这里自动创建他们（C）”按钮。 [http://img.blog.csdn.net/20150530112923166?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGl1eWFubGluZ2xhbnE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center](https://note.youdao.com/)3）：到另一个手动分区界面。然后点击左下角的+号，添加/home，/boot,/var和swap，以及/目录。根据分配给磁盘最大大小，合理设置他们的大小，其中/home,/boot,/var和swap都明确的指定大小，而/不指定大小，则剩余的都是他的，所以最后一个配置/[http://img.blog.csdn.net/20150530112856100?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGl1eWFubGluZ2xhbnE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center](https://note.youdao.com/) 2：命令行分区具体参考：https://www.cnblogs.com/leefan/p/5445542.html]]></content>
+      <categories>
+        <category>Mysql</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux使用中遇到的问题]]></title>
+    <url>%2F2018%2F08%2F27%2FLinux%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[1：-bash: ifconfig: command not found解决方案：12345671）万能yum安装大法： # yum install -y net-tools2）细细盘查具体参考：https://www.cnblogs.com/dunitian/p/4974761.html]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[oracle安装问题]]></title>
+    <url>%2F2018%2F08%2F27%2Fcentos%207%E5%AE%89%E8%A3%85oracle%2011gR2%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[1：pdksh包安装问题具体参见：https://blog.csdn.net/mchdba/article/details/73322561 2：tmpfs分区容量不够1234[FATAL] [INS-35172] Target database memory (3143MB) exceeds the systems available shared memory (&#123;0&#125;MB). CAUSE: The total available shared memory on the system (484 MB) was less than the chosen target database memory (3143 MB). ACTION: Enter a value for target database memory that is less than484 MB.A log of this session is currently saved as: /tmp/OraInstall2018-08-27_03-31-27AM/installActions2018-08-27_03-31-27AM.log. Oracle recommends that if you want to keep this log, you should move it from the temporary location to a more permanent location. 具体参见：https://blog.csdn.net/tianlesoftware/article/details/6896614 3：内存问题1234*问题： [FATAL] [INS-35175] No value given for the allocated memory of the database解决：调整Oracle自动管理内存的大小oracle.install.db.config.starterdb.memoryLimit=512 4：bash: netca: command not found12解决：1：仅仅解决oracle安装问题，找到netca 命令路径执行/usr/local/environment/oracle/product/11.2.0/db_1/bin/netca 5：lsnrctl和sqlplus 时报错1234567891011121314151617181920212223242526272829报错内容：SP2-0667: Message file sp1&lt;lang&gt;.msb not foundSP2-0750: You may need to set ORACLE_HOME to your Oracle software directory解决：1) Find out the path to sqlplus bash-3.2$ which sqlplus /u01/app/oracle/product/11.2.0/xe/bin/sqlplus2) Set your Oracle_HOME (upto xe directory) bash-3.2$ export ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe/3) Set the path to the directory where sqlplus is located to your PATH variable: bash-3.2$ export PATH=/u01/app/oracle/product/11.2.0/xe/bin:$PATH 4) Now you need to edit you bash_profile so all these takes effect everytime you log in.bash-3.2$ vim .bash_profile# User specific environment and startup programsORACLE_SID=XEexport ORACLE_SIDORACLE_HOME=/u01/app/oracle/product/11.2.0/xeexport ORACLE_HOMEPATH=$ORACLE_HOME/bin:$PATHexport PATHunset USERNAME---具体参见：https://www.cnblogs.com/wincai/p/5850102.html]]></content>
+      <categories>
+        <category>oracle</category>
+      </categories>
+      <tags>
+        <tag>数据库，oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux配置网络]]></title>
+    <url>%2F2018%2F08%2F27%2FLinux%20%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C%2F</url>
+    <content type="text"><![CDATA[第一种：环境：centos 7/虚拟机NAT模式 （1）：设置静态ip上网 编辑网卡文件 1234567891011# vim /etc/sysconfig/network-scripts/ifcfg-ens32TYPE=&quot;Ethernet&quot; BOOTPROTO=&quot;static&quot; #静态获取ipIPADDR=192.168.78.135 #手动设置ipNETMASK=255.255.255.0 #子网掩码GATEWAY=192.168.78.2 #网关NAME=&quot;ens32&quot;DEVICE=&quot;ens32&quot; #网卡名ONBOOT=&quot;yes&quot; #默认启动DNS=114.114.114.114 #域名解析 2：编辑resolv.conf文件 12345# vim /etc/resolv.confsearch localdomainnameserver 192.168.78.2nameserver 114.114.114.114 3：重新启动网络服务 1# systemctl restart network （2）设置DHCP上网12345678# vim /etc/sysconfig/network-scripts/ifcfg-ens32TYPE=&quot;Ethernet&quot; BOOTPROTO=&quot;dhcp&quot; #静态获取ipNAME=&quot;ens32&quot;DEVICE=&quot;ens32&quot; #网卡名ONBOOT=&quot;yes&quot; #默认启动DNS=114.114.114.114 #域名解析 2：重新启动网络服务 1# systemctl restart network]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[配置yum源]]></title>
+    <url>%2F2018%2F08%2F27%2F%E9%85%8D%E7%BD%AEyum%E6%BA%90%2F</url>
+    <content type="text"><![CDATA[环境：centos 7 第一种：配置本地yum源和网络源1：配置本地源 2：配置网络源 第二种：指定repo源 1:指定网络源1234567891011121314151617进入yum源目录# cd /etc/yum.repos.d备份旧的配置文件# mv CentOS-Base.repo CentOS-Base.repo.bak下载阿里云或者163的网络源（根据系统版本更改epel后数字，若wget命令未找到，配置media源）# wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo清理缓存# yum clean all重新生成缓存# yum makecache更新源# yum update 2：指定本地源 第三种：安装epel源 1234# yum install epel-release # yum makecache列出安装的源# yum repolist]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[试着写点东西]]></title>
     <url>%2F2018%2F08%2F26%2F8-26%2F</url>
     <content type="text"><![CDATA[2018/8/26 20:15其实今天也并不算什么特殊的日子，单纯的想纪念一下毕业之后的感受，社会真的跟学校差的太多，每天浑浑噩噩，上班下班，有点孤独，有点狼狈。深圳是一个好城市，其实挺喜欢的，但是这里或许永远不会成为我的家，不知为何，唉，下次再更，打游戏去了。]]></content>
@@ -13,7 +68,7 @@
   </entry>
   <entry>
     <title><![CDATA[mysql相关命令]]></title>
-    <url>%2F2018%2F08%2F25%2Fmysql-1%2F</url>
+    <url>%2F2018%2F08%2F26%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4%2F</url>
     <content type="text"><![CDATA[1：设置数据库密码第一种方法：mysql -uroot -p 进入数据库后 mysql&gt;set password=password(“新密码”); mysql&gt;flush privileges; 第二种方法：使用GRANT语句 mysql&gt;grant all on . to ‘root’@’localhost’ IDENTIFIED BY ‘你的密码’with grant option ; mysql&gt;flush privileges; 第三种方法：mysqladmin mysqladmin命令格式：mysqladmin -u 用户名 -p 旧密码 password 新密码 mysqladmin -u root -p “old passwd” password “new passwd”]]></content>
       <categories>
         <category>Mysql</category>
