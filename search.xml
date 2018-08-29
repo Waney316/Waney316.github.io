@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Host is not allowed to connect to this MySQL]]></title>
+    <url>%2F2018%2F08%2F29%2F%20%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[具体参见：https://www.cnblogs.com/zhangzhu/archive/2013/08/22/3274831.html1234567891011121314151617181920212223242526272829303132Host &apos;XXX&apos; is not allowed to connect to this MySQL server 解决方案/如何开启MySQL的远程帐号 如何开启MySQL的远程帐号-1）首先以 root 帐户登陆 MySQL在 Windows 主机中点击开始菜单，运行，输入“cmd”，进入控制台，然后cd 进入MySQL 的 bin 目录下，然后输入下面的命令。 &gt; MySQL -uroot -p123456 (123456 为 root 用户的密码。) 如何开启MySQL的远程帐号-2）创建远程登陆用户并授权 &gt; grant all PRIVILEGES on test_db.* to root@&apos;192.168.1.101&apos; identified by &apos;123456&apos;; 上面的语句表示将 test_db 数据库的所有权限授权给 root 这个用户，允许 root 用户在 192.168.1.101 这个 IP 进行远程登陆，并设置 root 用户的密码为 123456 。下面逐一分析所有的参数：all PRIVILEGES 表示赋予所有的权限给指定用户，这里也可以替换为赋予某一具体的权限，例如select,insert,update,delete,create,drop 等，具体权限间用“,”半角逗号分隔。test_db.* 表示上面的权限是针对于哪个表的，test_db指的是数据库，后面的 * 表示对于所有的表，由此可以推理出：对于全部数据库的全部表授权为“*.*”，对于某一数据库的全部表授权为“数据库名.*”，对于某一数据库的某一表授权为“数据库名.表名”。root 表示你要给哪个用户授权，这个用户可以是存在的用户，也可以是不存在的用户。192.168.1.101 表示允许远程连接的 IP 地址，如果想不限制链接的 IP 则设置为“%”即可。123456 为用户的密码。 如何开启MySQL的远程帐号-3)执行了上面的语句后，再执行下面的语句，方可立即生效。 &gt; flush privileges;]]></content>
+      <categories>
+        <category>Mysql</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Linux配置网络]]></title>
     <url>%2F2018%2F08%2F27%2FLinux%20%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C%2F</url>
     <content type="text"><![CDATA[第一种：环境：centos 7/虚拟机NAT模式 （1）：设置静态ip上网 编辑网卡文件 1234567891011# vim /etc/sysconfig/network-scripts/ifcfg-ens32TYPE=&quot;Ethernet&quot; BOOTPROTO=&quot;static&quot; #静态获取ipIPADDR=192.168.78.135 #手动设置ipNETMASK=255.255.255.0 #子网掩码GATEWAY=192.168.78.2 #网关NAME=&quot;ens32&quot;DEVICE=&quot;ens32&quot; #网卡名ONBOOT=&quot;yes&quot; #默认启动DNS=114.114.114.114 #域名解析 2：编辑resolv.conf文件 12345# vim /etc/resolv.confsearch localdomainnameserver 192.168.78.2nameserver 114.114.114.114 3：重新启动网络服务 1# systemctl restart network （2）设置DHCP上网12345678# vim /etc/sysconfig/network-scripts/ifcfg-ens32TYPE=&quot;Ethernet&quot; BOOTPROTO=&quot;dhcp&quot; #静态获取ipNAME=&quot;ens32&quot;DEVICE=&quot;ens32&quot; #网卡名ONBOOT=&quot;yes&quot; #默认启动DNS=114.114.114.114 #域名解析 2：重新启动网络服务 1# systemctl restart network]]></content>
@@ -12,9 +23,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[配置yum源]]></title>
-    <url>%2F2018%2F08%2F27%2F%E9%85%8D%E7%BD%AEyum%E6%BA%90%2F</url>
-    <content type="text"><![CDATA[环境：centos 7 第一种：配置本地yum源和网络源1：配置本地源 2：配置网络源 第二种：指定repo源 1:指定网络源1234567891011121314151617进入yum源目录# cd /etc/yum.repos.d备份旧的配置文件# mv CentOS-Base.repo CentOS-Base.repo.bak下载阿里云或者163的网络源（根据系统版本更改epel后数字，若wget命令未找到，配置media源）# wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo清理缓存# yum clean all重新生成缓存# yum makecache更新源# yum update 2：指定本地源 第三种：安装epel源 1234# yum install epel-release # yum makecache列出安装的源# yum repolist]]></content>
+    <title><![CDATA[Linux使用中遇到的问题]]></title>
+    <url>%2F2018%2F08%2F27%2FLinux%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[1：-bash: ifconfig: command not found解决方案：12345671）万能yum安装大法： # yum install -y net-tools2）细细盘查具体参考：https://www.cnblogs.com/dunitian/p/4974761.html]]></content>
       <categories>
         <category>Linux</category>
       </categories>
@@ -34,6 +45,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[配置yum源]]></title>
+    <url>%2F2018%2F08%2F27%2F%E9%85%8D%E7%BD%AEyum%E6%BA%90%2F</url>
+    <content type="text"><![CDATA[环境：centos 7 第一种：配置本地yum源和网络源1：配置本地源 2：配置网络源 第二种：指定repo源 1:指定网络源1234567891011121314151617进入yum源目录# cd /etc/yum.repos.d备份旧的配置文件# mv CentOS-Base.repo CentOS-Base.repo.bak下载阿里云或者163的网络源（根据系统版本更改epel后数字，若wget命令未找到，配置media源）# wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo清理缓存# yum clean all重新生成缓存# yum makecache更新源# yum update 2：指定本地源 第三种：安装epel源 1234# yum install epel-release # yum makecache列出安装的源# yum repolist]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[oracle安装问题]]></title>
     <url>%2F2018%2F08%2F27%2Fcentos%207%E5%AE%89%E8%A3%85oracle%2011gR2%E9%97%AE%E9%A2%98%2F</url>
     <content type="text"><![CDATA[1：pdksh包安装问题具体参见：https://blog.csdn.net/mchdba/article/details/73322561 2：tmpfs分区容量不够1234[FATAL] [INS-35172] Target database memory (3143MB) exceeds the systems available shared memory (&#123;0&#125;MB). CAUSE: The total available shared memory on the system (484 MB) was less than the chosen target database memory (3143 MB). ACTION: Enter a value for target database memory that is less than484 MB.A log of this session is currently saved as: /tmp/OraInstall2018-08-27_03-31-27AM/installActions2018-08-27_03-31-27AM.log. Oracle recommends that if you want to keep this log, you should move it from the temporary location to a more permanent location. 具体参见：https://blog.csdn.net/tianlesoftware/article/details/6896614 3：内存问题1234*问题： [FATAL] [INS-35175] No value given for the allocated memory of the database解决：调整Oracle自动管理内存的大小oracle.install.db.config.starterdb.memoryLimit=512 4：bash: netca: command not found12解决：1：仅仅解决oracle安装问题，找到netca 命令路径执行/usr/local/environment/oracle/product/11.2.0/db_1/bin/netca 5：lsnrctl和sqlplus 时报错1234567891011121314151617181920212223242526272829报错内容：SP2-0667: Message file sp1&lt;lang&gt;.msb not foundSP2-0750: You may need to set ORACLE_HOME to your Oracle software directory解决：1) Find out the path to sqlplus bash-3.2$ which sqlplus /u01/app/oracle/product/11.2.0/xe/bin/sqlplus2) Set your Oracle_HOME (upto xe directory) bash-3.2$ export ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe/3) Set the path to the directory where sqlplus is located to your PATH variable: bash-3.2$ export PATH=/u01/app/oracle/product/11.2.0/xe/bin:$PATH 4) Now you need to edit you bash_profile so all these takes effect everytime you log in.bash-3.2$ vim .bash_profile# User specific environment and startup programsORACLE_SID=XEexport ORACLE_SIDORACLE_HOME=/u01/app/oracle/product/11.2.0/xeexport ORACLE_HOMEPATH=$ORACLE_HOME/bin:$PATHexport PATHunset USERNAME---具体参见：https://www.cnblogs.com/wincai/p/5850102.html]]></content>
@@ -42,17 +64,6 @@
       </categories>
       <tags>
         <tag>数据库，oracle</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Linux使用中遇到的问题]]></title>
-    <url>%2F2018%2F08%2F27%2FLinux%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89%2F</url>
-    <content type="text"><![CDATA[1：-bash: ifconfig: command not found解决方案：12345671）万能yum安装大法： # yum install -y net-tools2）细细盘查具体参考：https://www.cnblogs.com/dunitian/p/4974761.html]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
