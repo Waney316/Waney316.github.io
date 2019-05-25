@@ -67,17 +67,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[mysql相关命令]]></title>
-    <url>%2F2018%2F08%2F26%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4%2F</url>
-    <content type="text"><![CDATA[1：设置数据库密码第一种方法：mysql -uroot -p 进入数据库后 mysql&gt;set password=password(“新密码”); mysql&gt;flush privileges; 第二种方法：使用GRANT语句 mysql&gt;grant all on . to ‘root’@’localhost’ IDENTIFIED BY ‘你的密码’with grant option ; mysql&gt;flush privileges; 第三种方法：mysqladmin mysqladmin命令格式：mysqladmin -u 用户名 -p 旧密码 password 新密码 mysqladmin -u root -p “old passwd” password “new passwd”]]></content>
-      <categories>
-        <category>Mysql</category>
-      </categories>
-      <tags>
-        <tag>mysql</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[试着写点东西]]></title>
     <url>%2F2018%2F08%2F26%2F8-26%2F</url>
     <content type="text"><![CDATA[2018/8/26 20:15其实今天也并不算什么特殊的日子，单纯的想纪念一下毕业之后的感受，社会真的跟学校差的太多，每天浑浑噩噩，上班下班，有点孤独，有点狼狈。深圳是一个好城市，其实挺喜欢的，但是这里或许永远不会成为我的家，不知为何，唉，下次再更，打游戏去了。]]></content>
@@ -86,6 +75,17 @@
       </categories>
       <tags>
         <tag>personal</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[mysql相关命令]]></title>
+    <url>%2F2018%2F08%2F26%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[1：设置数据库密码第一种方法：mysql -uroot -p 进入数据库后 mysql&gt;set password=password(“新密码”); mysql&gt;flush privileges; 第二种方法：使用GRANT语句 mysql&gt;grant all on . to ‘root’@’localhost’ IDENTIFIED BY ‘你的密码’with grant option ; mysql&gt;flush privileges; 第三种方法：mysqladmin mysqladmin命令格式：mysqladmin -u 用户名 -p 旧密码 password 新密码 mysqladmin -u root -p “old passwd” password “new passwd”]]></content>
+      <categories>
+        <category>Mysql</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
