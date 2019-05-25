@@ -401,7 +401,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4,484
+                  4,412
                 </span>
               
 
@@ -440,10 +440,10 @@
       
         
           
-          环境：CentOS 5.0 操作系统
-一.安装1.1 安装Vsftpd服务相关部件：[root@KcentOS5 ~]# yum install vsftpd*
-1.2 确认安装PAM服务相关部件：[root@KcentOS5 ~]# yum install pam*
-开发包，其实不装也没有关系，主
+          安装安装Vsftpd服务相关部件：[root@KcentOS5 ~]# yum install vsftpd*
+确认安装PAM服务相关部件：[root@KcentOS5 ~]# yum install pam*
+开发包，其实不装也没有关系，主要的目的是确认PAM。
+1安装DB4部件包：这里要特别安装
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -498,7 +498,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/27/centos 7安装oracle 11gR2问题/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/27/配置yum源/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="已经被时间上锁">
@@ -517,7 +517,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/27/centos 7安装oracle 11gR2问题/" itemprop="url">oracle安装问题</a></h1>
+                <a class="post-title-link" href="/2018/08/27/配置yum源/" itemprop="url">配置yum源</a></h1>
         
 
         <div class="post-meta">
@@ -552,8 +552,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/oracle/" itemprop="url" rel="index">
-                    <span itemprop="name">oracle</span>
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
                   </a>
                 </span>
 
@@ -570,8 +570,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/27/centos 7安装oracle 11gR2问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/27/centos 7安装oracle 11gR2问题/" itemprop="commentCount"></span>
+                <a href="/2018/08/27/配置yum源/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/27/配置yum源/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -593,7 +593,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  419
+                  188
                 </span>
               
 
@@ -609,7 +609,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  1
                 </span>
               
             </div>
@@ -632,12 +632,14 @@
       
         
           
-          1：pdksh包安装问题具体参见：https://blog.csdn.net/mchdba/article/details/73322561
-2：tmpfs分区容量不够1234[FATAL] [INS-35172] Target database memory (3143MB) exceeds th
+          环境：centos 7
+第一种：配置本地yum源和网络源1：配置本地源
+2：配置网络源
+第二种：指定repo源 1:指定网络源1234567891011121314151617进入yum源目录# cd /etc/yum.repos.d备份旧的配置文件# mv CentOS-Base.repo Cen
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/08/27/centos 7安装oracle 11gR2问题/#more" rel="contents">
+            <a class="btn" href="/2018/08/27/配置yum源/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1067,7 +1069,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/27/配置yum源/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/27/centos 7安装oracle 11gR2问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="已经被时间上锁">
@@ -1086,7 +1088,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/27/配置yum源/" itemprop="url">配置yum源</a></h1>
+                <a class="post-title-link" href="/2018/08/27/centos 7安装oracle 11gR2问题/" itemprop="url">oracle安装问题</a></h1>
         
 
         <div class="post-meta">
@@ -1121,8 +1123,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/oracle/" itemprop="url" rel="index">
+                    <span itemprop="name">oracle</span>
                   </a>
                 </span>
 
@@ -1139,8 +1141,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/27/配置yum源/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/27/配置yum源/" itemprop="commentCount"></span>
+                <a href="/2018/08/27/centos 7安装oracle 11gR2问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/27/centos 7安装oracle 11gR2问题/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1162,7 +1164,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  188
+                  419
                 </span>
               
 
@@ -1178,7 +1180,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -1201,14 +1203,12 @@
       
         
           
-          环境：centos 7
-第一种：配置本地yum源和网络源1：配置本地源
-2：配置网络源
-第二种：指定repo源 1:指定网络源1234567891011121314151617进入yum源目录# cd /etc/yum.repos.d备份旧的配置文件# mv CentOS-Base.repo Cen
+          1：pdksh包安装问题具体参见：https://blog.csdn.net/mchdba/article/details/73322561
+2：tmpfs分区容量不够1234[FATAL] [INS-35172] Target database memory (3143MB) exceeds th
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/08/27/配置yum源/#more" rel="contents">
+            <a class="btn" href="/2018/08/27/centos 7安装oracle 11gR2问题/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1452,6 +1452,196 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/26/8-26/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="已经被时间上锁">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="就这样">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/26/8-26/" itemprop="url">试着写点东西</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-26T00:00:00+08:00">
+                2018-08-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/个人/" itemprop="url" rel="index">
+                    <span itemprop="name">个人</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/26/8-26/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/26/8-26/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  107
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          2018/8/26  20:15其实今天也并不算什么特殊的日子，单纯的想纪念一下毕业之后的感受，社会真的跟学校差的太多，每天浑浑噩噩，上班下班，有点孤独，有点狼狈。深圳是一个好城市，其实挺喜欢的，但是这里或许永远不会成为我的家，不知为何，唉，下次再更，打游戏去了。
+
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/26/8-26/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/26/数据库相关命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1605,196 +1795,6 @@ mysql&gt;grant all
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/08/26/数据库相关命令/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/26/8-26/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="已经被时间上锁">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="就这样">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/26/8-26/" itemprop="url">试着写点东西</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-26T00:00:00+08:00">
-                2018-08-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/个人/" itemprop="url" rel="index">
-                    <span itemprop="name">个人</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/26/8-26/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/26/8-26/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  107
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          2018/8/26  20:15其实今天也并不算什么特殊的日子，单纯的想纪念一下毕业之后的感受，社会真的跟学校差的太多，每天浑浑噩噩，上班下班，有点孤独，有点狼狈。深圳是一个好城市，其实挺喜欢的，但是这里或许永远不会成为我的家，不知为何，唉，下次再更，打游戏去了。
-
-          
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/26/8-26/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
