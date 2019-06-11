@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="数据库，oracle," />
+  <meta name="keywords" content="zabbix," />
 
 
 
@@ -79,18 +79,23 @@
 
 
 
-<meta name="description" content="1：pdksh包安装问题具体参见：https://blog.csdn.net/mchdba/article/details/73322561 2：tmpfs分区容量不够1234[FATAL] [INS-35172] Target database memory (3143MB) exceeds the systems ">
-<meta name="keywords" content="数据库，oracle">
+<meta name="description" content="1 场景说明  业务场景：生产环境为引入zabbix 新功能，有升级需求。 风险zabbix_server版本升级，需要暂停应用。该时间段的监控数据不会采集。   基础流程：   ️备份数zabbix_server、zabbix_proxy数据库 ️升级zabbix_server、zabbix_proxy 应用 升级前">
+<meta name="keywords" content="zabbix">
 <meta property="og:type" content="article">
-<meta property="og:title" content="oracle安装问题">
-<meta property="og:url" content="http://yoursite.com/2018/08/27/centos 7安装oracle 11gR2问题/index.html">
+<meta property="og:title" content="Zabbix3.4升级4.2线上操作方案">
+<meta property="og:url" content="http://yoursite.com/2019/06/03/Zabbix3.4升级4.2线上操作方案/index.html">
 <meta property="og:site_name" content="就这样">
-<meta property="og:description" content="1：pdksh包安装问题具体参见：https://blog.csdn.net/mchdba/article/details/73322561 2：tmpfs分区容量不够1234[FATAL] [INS-35172] Target database memory (3143MB) exceeds the systems available shared memory (&amp;#123;0&amp;#125;MB">
+<meta property="og:description" content="1 场景说明  业务场景：生产环境为引入zabbix 新功能，有升级需求。 风险zabbix_server版本升级，需要暂停应用。该时间段的监控数据不会采集。   基础流程：   ️备份数zabbix_server、zabbix_proxy数据库 ️升级zabbix_server、zabbix_proxy 应用 升级前端php文件 前端页面设置   测试环境   系统环境：centos 7.4 备">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-27T11:52:41.689Z">
+<meta property="og:image" content="https://waney316-blog.oss-cn-shenzhen.aliyuncs.com/img/20190611133638.png">
+<meta property="og:image" content="https://waney316-blog.oss-cn-shenzhen.aliyuncs.com/img/20190611133741.png">
+<meta property="og:image" content="https://waney316-blog.oss-cn-shenzhen.aliyuncs.com/img/20190611133905.png">
+<meta property="og:image" content="https://waney316-blog.oss-cn-shenzhen.aliyuncs.com/img/20190611133836.png">
+<meta property="og:updated_time" content="2019-06-11T13:22:33.888Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="oracle安装问题">
-<meta name="twitter:description" content="1：pdksh包安装问题具体参见：https://blog.csdn.net/mchdba/article/details/73322561 2：tmpfs分区容量不够1234[FATAL] [INS-35172] Target database memory (3143MB) exceeds the systems available shared memory (&amp;#123;0&amp;#125;MB">
+<meta name="twitter:title" content="Zabbix3.4升级4.2线上操作方案">
+<meta name="twitter:description" content="1 场景说明  业务场景：生产环境为引入zabbix 新功能，有升级需求。 风险zabbix_server版本升级，需要暂停应用。该时间段的监控数据不会采集。   基础流程：   ️备份数zabbix_server、zabbix_proxy数据库 ️升级zabbix_server、zabbix_proxy 应用 升级前端php文件 前端页面设置   测试环境   系统环境：centos 7.4 备">
+<meta name="twitter:image" content="https://waney316-blog.oss-cn-shenzhen.aliyuncs.com/img/20190611133638.png">
 
 
 
@@ -120,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/27/centos 7安装oracle 11gR2问题/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/06/03/Zabbix3.4升级4.2线上操作方案/"/>
 
 
 
 
 
-  <title>oracle安装问题 | 就这样</title>
+  <title>Zabbix3.4升级4.2线上操作方案 | 就这样</title>
   
 
 
@@ -307,7 +312,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/27/centos 7安装oracle 11gR2问题/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/03/Zabbix3.4升级4.2线上操作方案/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="已经被时间上锁">
@@ -324,7 +329,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">oracle安装问题</h1>
+          <h1 class="post-title" itemprop="name headline">Zabbix3.4升级4.2线上操作方案</h1>
         
 
         <div class="post-meta">
@@ -336,8 +341,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-27T00:00:00+08:00">
-                2018-08-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-03T00:00:00+08:00">
+                2019-06-03
               </time>
             
 
@@ -359,8 +364,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/oracle/" itemprop="url" rel="index">
-                    <span itemprop="name">oracle</span>
+                  <a href="/categories/Zabbix/" itemprop="url" rel="index">
+                    <span itemprop="name">Zabbix</span>
                   </a>
                 </span>
 
@@ -377,8 +382,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/27/centos 7安装oracle 11gR2问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/27/centos 7安装oracle 11gR2问题/" itemprop="commentCount"></span>
+                <a href="/2019/06/03/Zabbix3.4升级4.2线上操作方案/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/03/Zabbix3.4升级4.2线上操作方案/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -400,7 +405,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  419
+                  1,361
                 </span>
               
 
@@ -416,7 +421,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  7
                 </span>
               
             </div>
@@ -437,12 +442,124 @@
       
 
       
-        <h6 id="1：pdksh包安装问题"><a href="#1：pdksh包安装问题" class="headerlink" title="1：pdksh包安装问题"></a>1：pdksh包安装问题</h6><p>具体参见：<a href="https://blog.csdn.net/mchdba/article/details/73322561" target="_blank" rel="noopener">https://blog.csdn.net/mchdba/article/details/73322561</a></p>
-<h6 id="2：tmpfs分区容量不够"><a href="#2：tmpfs分区容量不够" class="headerlink" title="2：tmpfs分区容量不够"></a>2：tmpfs分区容量不够</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[FATAL] [INS-35172] Target database memory (3143MB) exceeds the systems available shared memory (&#123;0&#125;MB).</span><br><span class="line">   CAUSE: The total available shared memory on the system (484 MB) was less than the chosen target database memory (3143 MB).</span><br><span class="line">   ACTION: Enter a value for target database memory that is less than484 MB.</span><br><span class="line">A log of this session is currently saved as: /tmp/OraInstall2018-08-27_03-31-27AM/installActions2018-08-27_03-31-27AM.log. Oracle recommends that if you want to keep this log, you should move it from the temporary location to a more permanent location.</span><br></pre></td></tr></table></figure>
-<p> 具体参见：<a href="https://blog.csdn.net/tianlesoftware/article/details/6896614" target="_blank" rel="noopener">https://blog.csdn.net/tianlesoftware/article/details/6896614</a></p>
-<h6 id="3：内存问题"><a href="#3：内存问题" class="headerlink" title="3：内存问题"></a>3：内存问题</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">*问题： [FATAL] [INS-35175] No value given for the allocated memory of the database</span><br><span class="line"></span><br><span class="line">解决：调整Oracle自动管理内存的大小</span><br><span class="line">oracle.install.db.config.starterdb.memoryLimit=512</span><br></pre></td></tr></table></figure>
-<h6 id="4：bash-netca-command-not-found"><a href="#4：bash-netca-command-not-found" class="headerlink" title="4：bash: netca: command not found"></a>4：bash: netca: command not found</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">解决：1：仅仅解决oracle安装问题，找到netca 命令路径执行</span><br><span class="line">/usr/local/environment/oracle/product/11.2.0/db_1/bin/netca</span><br></pre></td></tr></table></figure>
-<h6 id="5：lsnrctl和sqlplus-时报错"><a href="#5：lsnrctl和sqlplus-时报错" class="headerlink" title="5：lsnrctl和sqlplus 时报错"></a>5：lsnrctl和sqlplus 时报错</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">报错内容：</span><br><span class="line">SP2-0667: Message file sp1&lt;lang&gt;.msb not found</span><br><span class="line">SP2-0750: You may need to set ORACLE_HOME to your Oracle software directory</span><br><span class="line"></span><br><span class="line">解决：</span><br><span class="line">1) Find out the path to sqlplus</span><br><span class="line">    bash-3.2$ which sqlplus</span><br><span class="line">   /u01/app/oracle/product/11.2.0/xe/bin/sqlplus</span><br><span class="line"></span><br><span class="line">2) Set your Oracle_HOME (upto xe directory)</span><br><span class="line">   bash-3.2$ export ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe/</span><br><span class="line"></span><br><span class="line">3) Set the path to the directory where sqlplus is located to your PATH variable:</span><br><span class="line">    bash-3.2$ export PATH=/u01/app/oracle/product/11.2.0/xe/bin:$PATH</span><br><span class="line">    </span><br><span class="line">4) Now you need to edit you bash_profile so all these takes effect everytime you log in.</span><br><span class="line">bash-3.2$ vim .bash_profile</span><br><span class="line"></span><br><span class="line"># User specific environment and startup programs</span><br><span class="line">ORACLE_SID=XE</span><br><span class="line">export ORACLE_SID</span><br><span class="line">ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe</span><br><span class="line">export ORACLE_HOME</span><br><span class="line">PATH=$ORACLE_HOME/bin:$PATH</span><br><span class="line">export PATH</span><br><span class="line">unset USERNAME</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">具体参见：https://www.cnblogs.com/wincai/p/5850102.html</span><br></pre></td></tr></table></figure>
+        <p>1 场景说明</p>
+<ul>
+<li><strong>业务场景：</strong><br>生产环境为引入zabbix 新功能，有升级需求。</li>
+<li><strong>风险</strong><br>zabbix_server版本升级，需要暂停应用。该时间段的监控数据不会采集。</li>
+</ul>
+<ul>
+<li><strong>基础流程：</strong></li>
+</ul>
+<ol>
+<li>️备份数zabbix_server、zabbix_proxy数据库</li>
+<li>️升级zabbix_server、zabbix_proxy 应用</li>
+<li>升级前端php文件</li>
+<li>前端页面设置</li>
+</ol>
+<ul>
+<li><strong>测试环境</strong></li>
+</ul>
+<ol>
+<li>系统环境：centos 7.4</li>
+<li>备份工具：xtrabackup mysqldump</li>
+<li>zabbix版本：3.4.14(升级前)—–&gt;4.2.1(升级后)</li>
+</ol>
+<h2 id="2-zabbix-server升级"><a href="#2-zabbix-server升级" class="headerlink" title="2 zabbix_server升级"></a>2 zabbix_server升级</h2><h3 id="2-1-文件备份"><a href="#2-1-文件备份" class="headerlink" title="2.1 文件备份"></a>2.1 文件备份</h3><h4 id="2-1-1-数据库备份工具介绍"><a href="#2-1-1-数据库备份工具介绍" class="headerlink" title="2.1.1 数据库备份工具介绍"></a>2.1.1 数据库备份工具介绍</h4><blockquote>
+<p>Mysql最常用的三种备份工具：<br><strong>（1）mysqldump：</strong><br>通常为小数据情况下的备份<br>innodb： 热备，温备<br>MyISAM, Aria: 温备<br>单线程备份恢复比较慢<br><strong>（2）Xtrabackup（通常用innobackupex工具）：</strong><br>备份mysql大数据<br>InnoDB热备，增量备份；<br>MyISAM温备，不支持增量，只有完全备份<br>属于物理备份，速度快；<br><strong>（3）lvm-snapshot：</strong><br>接近于热备的工具：因为要先请求全局锁，而后创建快照，并在创建快照完成后释放全局锁；<br>使用cp、tar等工具进行物理备份；<br>备份和恢复速度较快；<br>很难实现增量备份，并且请求全局需要等待一段时间，在繁忙的服务器上尤其如此</p>
+</blockquote>
+<h5 id="因线上zabbix-server数据库大小高达800G，根据以上数据库相关备份工具特点，本次备份采用xtrabackup工具备份"><a href="#因线上zabbix-server数据库大小高达800G，根据以上数据库相关备份工具特点，本次备份采用xtrabackup工具备份" class="headerlink" title="因线上zabbix_server数据库大小高达800G，根据以上数据库相关备份工具特点，本次备份采用xtrabackup工具备份"></a>因线上zabbix_server数据库大小高达800G，根据以上数据库相关备份工具特点，本次备份采用xtrabackup工具备份</h5><p>参考文档：<a href="https://blog.csdn.net/isoleo/article/details/51882813" target="_blank" rel="noopener">innobackupex 备份及恢复数据库</a></p>
+<h4 id="2-1-2-server库备份"><a href="#2-1-2-server库备份" class="headerlink" title="2.1.2 server库备份"></a>2.1.2 server库备份</h4><ul>
+<li><p>查看MySQL数据存放位置及大小</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ grep &apos;datadir&apos; /etc/my.cnf</span><br><span class="line">datadir=/var/lib/mysql</span><br><span class="line"></span><br><span class="line">$ du -sh /var/lib/mysql</span><br><span class="line">1.5G	/var/lib/mysql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>停掉zabbix server</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl stop zabbix_server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对zabbix_server 所在MySQL 全量备份</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ innobackupex --defaults-file=/etc/my.cnf --user=root --password=&apos;Asp@aspire+888&apos; --host=localhost /root/backup/xtrabackup/</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="2-1-3-server配置文件备份"><a href="#2-1-3-server配置文件备份" class="headerlink" title="2.1.3 server配置文件备份"></a>2.1.3 server配置文件备份</h4><ul>
+<li><p>查看升级前zabbix_server 版本信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ /opt/aspire/product/zabbixsvr/sbin/zabbix_server -V</span><br><span class="line">zabbix_server (Zabbix) 3.4.14</span><br><span class="line">Revision 92832 18 April 2019, compilation time: Jun 5 2019 14:47:01</span><br><span class="line">$ mysql -uroot -p&apos;Asp@aspire+888&apos;</span><br><span class="line">mysql&gt; use zabbixsvr;</span><br><span class="line">mysql&gt; select * from dbversion;</span><br><span class="line">+-----------+----------+</span><br><span class="line">| mandatory | optional |</span><br><span class="line">+-----------+----------+</span><br><span class="line">| 3040000 | 30470000 |</span><br><span class="line">+-----------+----------+</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>备份zabbix_server  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mv /opt/aspire/product/web/website/zabbixsvr /opt/aspire/product/web/website/zabbixsvr3.4</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>备份php页面文件  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mv /opt/aspire/product/web/website/zabbix /opt/aspire/product/web/website/zabbix3.4</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>备份启动脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cp /etc/init.d/zabbix_server /etc/init.d/zabbix_server3.4</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="2-1-4-zabbix-server-升级"><a href="#2-1-4-zabbix-server-升级" class="headerlink" title="2.1.4 zabbix_server 升级"></a>2.1.4 zabbix_server 升级</h4><ul>
+<li><p>编译安装zabbix_server 4.2  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ./configure --prefix=/opt/aspire/product/zabbixsvr --with-mysql=/usr/bin/mysql_config --enable-server --enable-proxy --enable-agent --enable-ipv6 --with-libxml-dir=/opt/aspire/product/web/libxml2/ --with-unixODBC --with-net-snmp --with-SSH2 --with-openIPMI --with-libcurl</span><br><span class="line">$ make</span><br><span class="line">$ make install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改zabbix_server 配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ grep -v &quot;^#&quot; /opt/aspire/product/zabbixsvr3.4/etc/zabbix_server.conf |grep -v &quot;^$&quot; </span><br><span class="line"></span><br><span class="line">LogFile=/tmp/zabbix_server.log</span><br><span class="line">DBHost=localhost</span><br><span class="line">DBName=zabbixsvr</span><br><span class="line">DBUser=zabbix</span><br><span class="line">DBPassword=Asp@zabbix_asp_2019</span><br><span class="line">DBSocket=/tmp/mysql.sock</span><br><span class="line">StartPollers=50</span><br><span class="line">CacheSize=128M</span><br><span class="line">HistoryCacheSize=256M</span><br><span class="line">TrendCacheSize=128M</span><br><span class="line">ValueCacheSize=128M</span><br><span class="line">Timeout=4</span><br><span class="line">LogSlowQueries=3000</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>加载启动脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl reload zabbix_server.service</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>升级zabbix_server，观察日志输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld.service </span><br><span class="line">systemctl start zabbix_server.service </span><br><span class="line">tail -f /tmp/zabbix_server.log</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://waney316-blog.oss-cn-shenzhen.aliyuncs.com/img/20190611133638.png" alt=""></p>
+<ul>
+<li><p>拷贝PHP文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cp -rf frontends/php/ /opt/aspire/product/web/apache/website/ </span><br><span class="line">$ mv /opt/aspire/product/web/apache/website/php /opt/aspire/product/web/apache/website/zabbix</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>web页面依次设置即可<br><img src="https://waney316-blog.oss-cn-shenzhen.aliyuncs.com/img/20190611133741.png" alt=""></p>
+</li>
+</ul>
+<hr>
+<h5 id="注意：如果升级过程中数据同步失败或出现无法解决的问题需要回滚版本，使用如下操作回退并恢复数据"><a href="#注意：如果升级过程中数据同步失败或出现无法解决的问题需要回滚版本，使用如下操作回退并恢复数据" class="headerlink" title="注意：如果升级过程中数据同步失败或出现无法解决的问题需要回滚版本，使用如下操作回退并恢复数据"></a><font face="黑体" color="red" size="3">注意：如果升级过程中数据同步失败或出现无法解决的问题需要回滚版本，使用如下操作回退并恢复数据</font></h5><ul>
+<li>停止mysql服务<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop mysqld.service  </span><br><span class="line">mv /var/lib/mysql/ /var/lib/mysql_bak &amp;&amp; mkdir -p /var/lib/mysql</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://waney316-blog.oss-cn-shenzhen.aliyuncs.com/img/20190611133905.png" alt=""></p>
+<ul>
+<li><p>执行恢复操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//--apply-log选项的命令是准备在一个备份上启动mysql服务</span><br><span class="line">$ innobackupex --defaults-file=/etc/my.cnf --user=root --passwod=&apos;Asp@aspire+888&apos; --apply-log /root/backup/xtrabackup/2019-06-06_10-47-30</span><br><span class="line">//--copy-back 选项的命令从备份目录拷贝数据,索引,日志到my.cnf文件里规定的初始位置</span><br><span class="line"></span><br><span class="line">$ innobackupex --defaults-file=/etc/my.cnf --user=root --passwod=&apos;Asp@aspire+888&apos; --copy-back /root/backup/xtrabackup/2019-06-06_10-47-30</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>授权目录，启动服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ chown -R mysql:mysql /var/lib/mysql</span><br><span class="line">$ systemctl start mysqld.service</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>恢复zabbix配置文件及php文件</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">省略</span><br></pre></td></tr></table></figure>
+<h2 id="3-zabbix-proxy-升级"><a href="#3-zabbix-proxy-升级" class="headerlink" title="3 zabbix_proxy 升级"></a>3 zabbix_proxy 升级</h2><h3 id="3-1-文件备份"><a href="#3-1-文件备份" class="headerlink" title="3.1 文件备份"></a>3.1 文件备份</h3><h6 id="说明：proxy库文件不大，可使用mysqldump方式备份"><a href="#说明：proxy库文件不大，可使用mysqldump方式备份" class="headerlink" title="说明：proxy库文件不大，可使用mysqldump方式备份"></a>说明：proxy库文件不大，可使用mysqldump方式备份</h6><h4 id="3-1-2-备份proxy文件"><a href="#3-1-2-备份proxy文件" class="headerlink" title="3.1.2 备份proxy文件"></a>3.1.2 备份proxy文件</h4><ul>
+<li><p>停掉zabbix proxy  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl stop zabbix_proxy</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>备份zabbix_proxy  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mv /opt/aspire/product/zabbixpxy /opt/aspire/product/zabbixpxy3.4</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>备份启动脚本  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cp /etc/init.d/zabbix_proxy /etc/init.d/zabbix_proxy2.2.7</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="3-1-3-备份proxy-数据库"><a href="#3-1-3-备份proxy-数据库" class="headerlink" title="3.1.3 备份proxy 数据库"></a>3.1.3 备份proxy 数据库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mysqldump -uzabbix –pzabbix_asp_2018 --skip-lock-tables zabbix_proxy &gt; zabbix_proxybak.sql</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-zabbix-proxy-升级"><a href="#3-2-zabbix-proxy-升级" class="headerlink" title="3.2 zabbix_proxy 升级"></a>3.2 zabbix_proxy 升级</h3><ul>
+<li><p>编译安装 zabbix_proxy 4.2<br>MySQL 编译参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ./configure --prefix=/opt/aspire/product/zabbixpxy --with-mysql=/usr/bin/mysql_config --enable-proxy --enable-agent --enable-ipv6 --with-libxml-dir=/opt/aspire/product/web/libxml2/ --with-unixODBC --with-net-snmp --with-ssh2 --with-openIPMI --with-libcurl=/usr/local/src/bin/curl-config</span><br><span class="line">$ make</span><br><span class="line">$ make install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改zabbix_proxy 配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ grep -v &quot;^#&quot; /opt/aspire/product/zabbixpxy/etc/zabbix_proxy.conf |grep -v &quot;^$&quot;</span><br><span class="line"></span><br><span class="line">Server=127.0.0.1</span><br><span class="line">Hostname=Zabbix proxy</span><br><span class="line">ListenPort=10061</span><br><span class="line">LogFile=/tmp/zabbix_proxy.log</span><br><span class="line">DBHost=localhost</span><br><span class="line">DBName=zabbixpxy</span><br><span class="line">DBUser=zabbix</span><br><span class="line">DBPassword=Asp@zabbix_asp_2019</span><br><span class="line">DBSocket=/tmp/mysql.sock</span><br><span class="line">StartPollers=50</span><br><span class="line">CacheSize=128M</span><br><span class="line">HistoryCacheSize=128M</span><br><span class="line">Timeout=4</span><br><span class="line">FpingLocation=/usr/local/sbin/fping</span><br><span class="line">LogSlowQueries=3000</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>加载启动脚本 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl reload zabbix_proxy.service</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>升级zabbix_proxy</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld.service </span><br><span class="line">systemctl start zabbix_proxy.service </span><br><span class="line">tail -f /tmp/zabbix_proxy.log</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://waney316-blog.oss-cn-shenzhen.aliyuncs.com/img/20190611133836.png" alt=""></p>
+<h5 id="注意：如果升级过程中数据同步失败或出现无法解决的问题需要回滚版本，使用如下操作回退并恢复数据-1"><a href="#注意：如果升级过程中数据同步失败或出现无法解决的问题需要回滚版本，使用如下操作回退并恢复数据-1" class="headerlink" title="注意：如果升级过程中数据同步失败或出现无法解决的问题需要回滚版本，使用如下操作回退并恢复数据"></a><font face="黑体" color="red" size="3">注意：如果升级过程中数据同步失败或出现无法解决的问题需要回滚版本，使用如下操作回退并恢复数据</font></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">新建zabbix_proxy库并授权</span><br><span class="line">$ mysql -uroot -p</span><br><span class="line">mysql&gt; create database zabbix_proxy character set utf8 collate utf8_bin;</span><br><span class="line">mysql&gt; grant all privileges on zabbix_proxy.* to zabbix@&apos;localhost&apos; identified by &apos;zabbix_asp_2018&apos;;</span><br><span class="line">mysql&gt; flush privileges;</span><br><span class="line">mysql&gt; quit;</span><br><span class="line"></span><br><span class="line">导入备份的zabbix_proxy库文件</span><br><span class="line">$ mysql -uzabbix -pzabbix zabbix_proxy &lt; zabbix_proxybak.sql</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -489,7 +606,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/数据库，oracle/" rel="tag"><i class="fa fa-tag"></i> 数据库，oracle</a>
+            <a href="/tags/zabbix/" rel="tag"><i class="fa fa-tag"></i> zabbix</a>
           
         </div>
       
@@ -502,8 +619,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/27/Linux相关问题解决（持续更新）/" rel="next" title="Linux使用中遇到的问题">
-                <i class="fa fa-chevron-left"></i> Linux使用中遇到的问题
+              <a href="/2019/05/25/Zabbix+ElasticSearch+Kibana 实践/" rel="next" title="Zabbix + ElasticSearch + Kibana 实践">
+                <i class="fa fa-chevron-left"></i> Zabbix + ElasticSearch + Kibana 实践
               </a>
             
           </div>
@@ -511,10 +628,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/25/vsftp配置及虚拟用户创建.md/" rel="prev" title="VSftp配置及虚拟用户创建">
-                VSftp配置及虚拟用户创建 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -598,7 +711,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -609,7 +722,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -620,7 +733,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -704,7 +817,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#1：pdksh包安装问题"><span class="nav-number">1.</span> <span class="nav-text">1：pdksh包安装问题</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2：tmpfs分区容量不够"><span class="nav-number">2.</span> <span class="nav-text">2：tmpfs分区容量不够</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3：内存问题"><span class="nav-number">3.</span> <span class="nav-text">3：内存问题</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4：bash-netca-command-not-found"><span class="nav-number">4.</span> <span class="nav-text">4：bash: netca: command not found</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5：lsnrctl和sqlplus-时报错"><span class="nav-number">5.</span> <span class="nav-text">5：lsnrctl和sqlplus 时报错</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-zabbix-server升级"><span class="nav-number">1.</span> <span class="nav-text">2 zabbix_server升级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-文件备份"><span class="nav-number">1.1.</span> <span class="nav-text">2.1 文件备份</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-数据库备份工具介绍"><span class="nav-number">1.1.1.</span> <span class="nav-text">2.1.1 数据库备份工具介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#因线上zabbix-server数据库大小高达800G，根据以上数据库相关备份工具特点，本次备份采用xtrabackup工具备份"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">因线上zabbix_server数据库大小高达800G，根据以上数据库相关备份工具特点，本次备份采用xtrabackup工具备份</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-2-server库备份"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.1.2 server库备份</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-3-server配置文件备份"><span class="nav-number">1.1.3.</span> <span class="nav-text">2.1.3 server配置文件备份</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-4-zabbix-server-升级"><span class="nav-number">1.1.4.</span> <span class="nav-text">2.1.4 zabbix_server 升级</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#注意：如果升级过程中数据同步失败或出现无法解决的问题需要回滚版本，使用如下操作回退并恢复数据"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">注意：如果升级过程中数据同步失败或出现无法解决的问题需要回滚版本，使用如下操作回退并恢复数据</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-zabbix-proxy-升级"><span class="nav-number">2.</span> <span class="nav-text">3 zabbix_proxy 升级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-文件备份"><span class="nav-number">2.1.</span> <span class="nav-text">3.1 文件备份</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#说明：proxy库文件不大，可使用mysqldump方式备份"><span class="nav-number">2.1.0.0.1.</span> <span class="nav-text">说明：proxy库文件不大，可使用mysqldump方式备份</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-备份proxy文件"><span class="nav-number">2.1.1.</span> <span class="nav-text">3.1.2 备份proxy文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-3-备份proxy-数据库"><span class="nav-number">2.1.2.</span> <span class="nav-text">3.1.3 备份proxy 数据库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-zabbix-proxy-升级"><span class="nav-number">2.2.</span> <span class="nav-text">3.2 zabbix_proxy 升级</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#注意：如果升级过程中数据同步失败或出现无法解决的问题需要回滚版本，使用如下操作回退并恢复数据-1"><span class="nav-number">2.2.0.1.</span> <span class="nav-text">注意：如果升级过程中数据同步失败或出现无法解决的问题需要回滚版本，使用如下操作回退并恢复数据</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
