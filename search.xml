@@ -31,17 +31,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Linux配置网络]]></title>
-    <url>%2F2018%2F08%2F27%2FLinux%20%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C%2F</url>
-    <content type="text"><![CDATA[第一种：环境：centos 7/虚拟机NAT模式 （1）：设置静态ip上网 编辑网卡文件 1234567891011# vim /etc/sysconfig/network-scripts/ifcfg-ens32TYPE=&quot;Ethernet&quot; BOOTPROTO=&quot;static&quot; #静态获取ipIPADDR=192.168.78.135 #手动设置ipNETMASK=255.255.255.0 #子网掩码GATEWAY=192.168.78.2 #网关NAME=&quot;ens32&quot;DEVICE=&quot;ens32&quot; #网卡名ONBOOT=&quot;yes&quot; #默认启动DNS=114.114.114.114 #域名解析 2：编辑resolv.conf文件 12345# vim /etc/resolv.confsearch localdomainnameserver 192.168.78.2nameserver 114.114.114.114 3：重新启动网络服务 1# systemctl restart network （2）设置DHCP上网12345678# vim /etc/sysconfig/network-scripts/ifcfg-ens32TYPE=&quot;Ethernet&quot; BOOTPROTO=&quot;dhcp&quot; #静态获取ipNAME=&quot;ens32&quot;DEVICE=&quot;ens32&quot; #网卡名ONBOOT=&quot;yes&quot; #默认启动DNS=114.114.114.114 #域名解析 2：重新启动网络服务 1# systemctl restart network]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Linux分区方案]]></title>
     <url>%2F2018%2F08%2F27%2FLinux%E5%88%86%E5%8C%BA%E6%96%B9%E6%A1%88%E4%B8%8E%E8%BF%87%E7%A8%8B%2F</url>
     <content type="text"><![CDATA[Linux分区方案：方案1：（监控服务器，负载均衡器）12345678910111./boot引导分区，存放引导文件和Linux内核。 启动文件：用于判断你需要启动哪个操作系统或启动哪个内核。 内核：简单的讲，程序与硬件间的桥梁，你使用应用程序通过内核控制整个计算机。 分区时一般设定：100-200M.2.swapSwap分区，作为虚拟内存使用。在系统的物理内存不够用的时候，把硬盘空间中的一部分空间释放出来，以供当前运行的程序使用。分区时一般设定：内存大小的1到1.5倍.3./作为文件系统的根目录剩余的给根分区。 方案2：（适合数据库服务器，存储服务器，共享存储服务器NFS）123456789101112131./boot引导分区，存放引导文件和Linux内核。 启动文件：用于判断你需要启动哪个操作系统或启动哪个内核。 内核：简单的讲，程序与硬件间的桥梁，你使用应用程序通过内核控制整个计算机。 分区时一般设定：100-200M.2.swapSwap分区，作为虚拟内存使用。在系统的物理内存不够用的时候，把硬盘空间中的一部分空间释放出来，以供当前运行的程序使用。分区时一般设定：内存大小的1到1.5倍.3./作为文件系统的根目录剩余的给根分区。4./data剩余的全部给data分区，用与存放重要数据。 方案3：（适合大门户网站的服务器）1234567891011121./boot引导分区，存放引导文件和Linux内核。 启动文件：用于判断你需要启动哪个操作系统或启动哪个内核。 内核：简单的讲，程序与硬件间的桥梁，你使用应用程序通过内核控制整个计算机。 分区时一般设定：100-200M.2.swapSwap分区，作为虚拟内存使用。在系统的物理内存不够用的时候，把硬盘空间中的一部分空间释放出来，以供当前运行的程序使用。分区时一般设定：内存大小的1到1.5倍.3./作为文件系统的根目录剩余的给根分区。4.剩余的磁盘不分区，哪里有需要再分给谁。 分区过程：1：图形化分区123456781）：勾选我要配置分区[http://img.blog.csdn.net/20150530112939843?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGl1eWFubGluZ2xhbnE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center](https://note.youdao.com/)2）：点击完成，到手动分区界面；做2步，先将分区方案改为标准分区，然后点击“点这里自动创建他们（C）”按钮。 [http://img.blog.csdn.net/20150530112923166?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGl1eWFubGluZ2xhbnE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center](https://note.youdao.com/)3）：到另一个手动分区界面。然后点击左下角的+号，添加/home，/boot,/var和swap，以及/目录。根据分配给磁盘最大大小，合理设置他们的大小，其中/home,/boot,/var和swap都明确的指定大小，而/不指定大小，则剩余的都是他的，所以最后一个配置/[http://img.blog.csdn.net/20150530112856100?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGl1eWFubGluZ2xhbnE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center](https://note.youdao.com/) 2：命令行分区具体参考：https://www.cnblogs.com/leefan/p/5445542.html]]></content>
@@ -50,6 +39,17 @@
       </categories>
       <tags>
         <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux配置网络]]></title>
+    <url>%2F2018%2F08%2F27%2FLinux%20%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C%2F</url>
+    <content type="text"><![CDATA[第一种：环境：centos 7/虚拟机NAT模式 （1）：设置静态ip上网 编辑网卡文件 1234567891011# vim /etc/sysconfig/network-scripts/ifcfg-ens32TYPE=&quot;Ethernet&quot; BOOTPROTO=&quot;static&quot; #静态获取ipIPADDR=192.168.78.135 #手动设置ipNETMASK=255.255.255.0 #子网掩码GATEWAY=192.168.78.2 #网关NAME=&quot;ens32&quot;DEVICE=&quot;ens32&quot; #网卡名ONBOOT=&quot;yes&quot; #默认启动DNS=114.114.114.114 #域名解析 2：编辑resolv.conf文件 12345# vim /etc/resolv.confsearch localdomainnameserver 192.168.78.2nameserver 114.114.114.114 3：重新启动网络服务 1# systemctl restart network （2）设置DHCP上网12345678# vim /etc/sysconfig/network-scripts/ifcfg-ens32TYPE=&quot;Ethernet&quot; BOOTPROTO=&quot;dhcp&quot; #静态获取ipNAME=&quot;ens32&quot;DEVICE=&quot;ens32&quot; #网卡名ONBOOT=&quot;yes&quot; #默认启动DNS=114.114.114.114 #域名解析 2：重新启动网络服务 1# systemctl restart network]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
